@@ -9,6 +9,8 @@ import (
 
 func Routes(router *gin.Engine) {
 	router.GET("/", welcome)
+	router.GET("/goroutines", controllers.GoRoutineChanCommunication)
+	router.GET("/goroutines-with-chan", controllers.RunGoroutinesWithChan)
 	router.GET("/users", controllers.GetAllUsers)
 	router.POST("/user", controllers.CreateUser)
 	router.GET("/user/:userId", controllers.GetSingleUser)
