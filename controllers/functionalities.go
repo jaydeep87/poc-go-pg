@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func RunGoroutinesWithChan(c *gin.Context) {
+func GeneratePrimeWithChan(c *gin.Context) {
 	limit :=100	
 	primeNoChan := make(chan int)
 	var wg sync.WaitGroup
@@ -33,7 +33,7 @@ func RunGoroutinesWithChan(c *gin.Context) {
 	wg.Wait()
 
 }
-func GoRoutineChanCommunication(c *gin.Context) {
+func GeneratePrimeWithChanComm(c *gin.Context) {
 	limit :=100	
 	primeNoChan := make(chan int)
 	var wg sync.WaitGroup
