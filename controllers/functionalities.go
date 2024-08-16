@@ -5,6 +5,7 @@ import (
 	"sync"
 	"net/http"
 	topics "github.com/jaydeep87/poc-go-pg/topics"
+	util "github.com/jaydeep87/poc-go-pg/util"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,6 +14,12 @@ func GeneratePrimeWithChan(c *gin.Context) {
 	primeNoChan := make(chan int)
 	var wg sync.WaitGroup
 	wg.Add(2)
+	if limit >0 {
+		err := util.CreateError(402, "limit must be positive");
+		if err != nil{
+			fmt.Println("err", err)
+		}
+	}
 	go topics.GeneratePrime(primeNoChan, limit, &wg)
 	// go topics.PrintPrime(primeNoChan, &wg)
 	
